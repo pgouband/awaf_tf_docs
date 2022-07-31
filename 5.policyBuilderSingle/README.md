@@ -140,14 +140,14 @@ Create a **suggestions.tf** file:
 the name of the **bigip_waf_pb_suggestions** data source should be unique so we can track what modifications have been enforced and when it was.
 
 ```terraform
-data "bigip_waf_pb_suggestions" "03JUL20221715" {
+data "bigip_waf_pb_suggestions" "JUL20221715" {
   policy_name            = "scenario5"
   partition              = "Common"
   minimum_learning_score = 100
 }
 
-output "03JUN20221715" {
-	value	= bigip_waf_pb_suggestions.03JUN20221715.json
+output "JUN20221715" {
+	value	= bigip_waf_pb_suggestions.JUN20221715.json
 }
 ```
 
@@ -172,7 +172,7 @@ resource "bigip_waf_policy" "this" {
     template_name        = "POLICY_TEMPLATE_FUNDAMENTAL"
     type                 = "security"
     policy_import_json   = data.http.scenario4.body
-    suggestions		 = [data.bigip_waf_pb_suggestions.03JUN20221715.json]
+    suggestions		 = [data.bigip_waf_pb_suggestions.JUN20221715.json]
 }
 ```
 
